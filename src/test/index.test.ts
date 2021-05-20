@@ -70,4 +70,19 @@ describe("Mars Rover", () => {
       expect(result).toBe(expectedResult);
     }
   );
+
+  it.each([
+    ["U", "0:0:N"],
+    ["LU", "0:0:N"],
+    ["LLU", "0:0:W"],
+    ["RU", "0:0:N"],
+    ["MU", "0:0:N"],
+    ["MMMUU", "0:1:N"],
+  ])(
+    'should undo the previous state given command "%s"',
+    (command, expectedResult) => {
+      const result = executeCommand(command);
+      expect(result).toBe(expectedResult);
+    }
+  );
 });
